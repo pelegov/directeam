@@ -27,7 +27,8 @@ jobs:
         name: set pipeline variables
         run: |
           echo "REPO=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
-          echo "VERSION=${GITHUB_RUN_NUMBER}.$(($GITHUB_RUN_ATTEMPT-1))" >> ${GITHUB_ENV}   
+          echo "VERSION=${GITHUB_RUN_NUMBER}.$(($GITHUB_RUN_ATTEMPT-1))" >> ${GITHUB_ENV}
+          echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV   
       -
         name: Build and push
         uses: docker/build-push-action@v3
@@ -37,4 +38,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ env.REPO }}:latest
-            ghcr.io/${{ env.REPO }}:${{ env.VERSION }}
+            ghcr.io/${{ env.REPO }}:${{ env.SHORT_SHA }}
