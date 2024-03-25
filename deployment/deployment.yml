@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nave-go
+  labels:
+    app: nave-go
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nave-go
+  template:
+    metadata:
+      labels:
+        app: nave-go
+    spec:
+      containers:
+      - name: nave-go
+        image: pelegov/nave-go:184b09f
+        ports:
+        - containerPort: 8000
