@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nave-go
-        image: ghcr.io/pelegov/directeam:572c278
+        image: ghcr.io/pelegov/directeam:5f47534
         ports:
         - containerPort: 8000
