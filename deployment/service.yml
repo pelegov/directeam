@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nave-go-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: nave-go
   ports:
